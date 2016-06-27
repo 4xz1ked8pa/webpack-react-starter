@@ -1,0 +1,85 @@
+// - - - - - - - - - - - - - - - - - - -
+// - - typography
+// global typography styles
+
+.larrseitbold { font-family: 'lb_30A393D'; }
+.larrseit { font-family: 'l_30A393D'; }
+
+.redactedregular {
+  font-family: 'redacted-regular';
+}
+.redactedscript {
+  font-family: 'redacted-script-bold';
+}
+
+p {
+	margin: 0px 0px 1em 0px;
+	padding: 0;
+}
+h1, h2, h3, h4, h5 {
+	font-weight: normal;
+	line-height: 1em;
+	padding: 0;
+	margin: 5px 0;
+}
+
+h1, .alpha {
+  font-size: rem(42);
+  @include MQ(M) {
+    font-size: rem(61);
+  }
+}
+h2, .beta {
+  @include MQ(XS) {
+    font-size:rem(30);
+    line-height: 1.4;
+  }
+  @include MQ(M) {
+    font-size: rem(51);
+    line-height: 1.75;
+  }
+}
+h3, .gamma {
+  font-size: rem(31);
+  @include MQ(M) {
+    font-size: rem(41);
+  }
+}
+h4, .delta {
+  font-size: rem(18);
+  @include MQ(M) {
+    font-size: rem(21);
+  }
+}
+h5, .epsilon {
+  font-size: rem(18);
+}
+h6, .zeta {
+  font-size: rem(16);
+}
+p {
+  font-size: rem(14);
+  line-height: 1.5;
+  opacity: 0.7;
+}
+
+@mixin text-dark {
+  color: #333333;
+  color: rgba(51, 51, 51, 0.6);
+}
+
+@mixin text-mute {
+  color: white;
+  color: rgba(250,250,250,0.6);
+}
+
+.text-dark {
+  @include text-dark;
+}
+.text-mute {
+  @include text-mute;
+}
+
+.text-darker {
+  color: #333333;
+}

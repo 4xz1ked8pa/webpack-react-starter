@@ -1,6 +1,9 @@
 var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var bourbon = require('node-bourbon').includePaths;
+var loaders = require('./webpack.loaders');
 
 module.exports = {
   devtool: 'eval',
@@ -37,14 +40,21 @@ module.exports = {
       favicon: './favicon.ico',
       inject: true,
       hash: true
-    })
+    }),
+    new ExtractTextPlugin('[name].[contenthash].css'),
   ],
   module: {
     loaders: [{
-      test: /\.js$/,
-      loaders: ['babel'],
-      include: path.join(__dirname, 'src'),
-      exclude: '/node_modules'
-    }]
-  }
+      test: /\.scss$/,
+      loader: ExtractTextPlugin.extract(
+        'style', // The backup style loader
+        `css?sourceMap!postcss-loader!sass?includePaths[]=${bourbon}`
+      )
+    }].concat(loaders)
+  },
+  postcss: [
+    require('autoprefixer')({
+      browsers: '> 1%'
+    })
+  ]
 }

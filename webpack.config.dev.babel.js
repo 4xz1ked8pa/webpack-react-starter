@@ -1,13 +1,8 @@
-var path = require('path');
-var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-
-// entry: [
-//   'webpack-dev-server/client?http://localhost:3000',
-//   'webpack/hot/only-dev-server',
-//   'react-hot-loader/patch',
-//   './src/index'
-// ],
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const bourbon = require('node-bourbon').includePaths;
+var loaders = require('./webpack.loaders');
 
 module.exports = {
   devtool: 'eval',
@@ -35,9 +30,14 @@ module.exports = {
   ],
   module: {
     loaders: [{
-      test: /\.js$/,
-      loaders: ['babel'],
-      include: path.join(__dirname, 'src')
-    }]
-  }
+      test: /\.scss$/,
+      exclude: /node_modules/,
+      loaders: ['style', 'css', 'postcss', `sass?includePaths[]=${bourbon}`]
+    }].concat(loaders)
+  },
+  postcss: [
+    require('autoprefixer')({
+      browsers: '> 1%'
+    })
+  ]
 }

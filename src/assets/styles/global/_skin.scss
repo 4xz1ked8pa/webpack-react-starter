@@ -1,0 +1,19 @@
+// - - - - - - - - - - - - - - - - - - -
+// - - skin
+// global skin styles - gradients, colors, box-shadows, etc.
+
+
+//COLORS
+$color-1: #FAF7F3;
+$color-2: #002350;
+$color-3: #54585E;
+$color-4: #00E3AD;
+
+$color-block-border: rgba(204,190,173,.5);
+
+$color-text-mute: lighten($color-3, 20%);
+$color-text-normal: $color-3;
+$color-text-dark: darken($color-3, 20%);
+$color-links: $color-2;
+
+$text-shadow: 1px 1px 2px rgba(0,0,0,0.25);
